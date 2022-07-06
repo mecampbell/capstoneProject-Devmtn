@@ -14,7 +14,6 @@ nextButton.addEventListener('click', () => {
 
 function startGame() {
     startBtn.classList.add('hide')
-  shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
@@ -22,7 +21,7 @@ function startGame() {
 
 function setNextQuestion() {
   resetState()
-  showQuestion(shuffledQuestions[currentQuestionIndex])
+  showQuestion(questions[currentQuestionIndex])
 }
 
 function showQuestion(question) {
@@ -57,28 +56,33 @@ function selectAnswer(e) {
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+  if (questions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
-    startBtn.innerText = 'Restart'
+    startBtn.innerText = 'Results'
     startBtn.classList.remove('hide')
   }
 }
 
 function setStatusClass(element, correct) {
-  clearStatusClass(element)
-  if (correct) {
-    element.classList.add('correct')
-  } else {
-    element.classList.add('wrong')
+  addStatusClass(element)
+  if (guardian >= 2) {
+    element.classList.add('guardian')
+  } else if (sentinel >= 2) {
+    element.classList.add('sentinel')
+  } else if (consular >=2 ) {
+    element.classList.add('consular')
   }
 }
 
-function clearStatusClass(element) {
+function addStatusClass(element) {
   element.classList.remove('correct')
   element.classList.remove('wrong')
 }
 
+const finalResult = () => {
+
+}
 const questions = [
     {
         question: "Are you ready to be a Jedi?",
@@ -90,33 +94,33 @@ const questions = [
     {
         question: "A woman and her small child are beset by a desperate-looking group of thugs. They are menacing her with weapons and she screams to you for help. What do you do?",
         answers: [
-            { text: 'Help them flee', correct: true },
-            { text: 'Attack the thugs', correct: false },
-            { text: 'Stop the thugs and find out why they are attacking her.', correct: false }
+            { text: 'Help them flee', guardian },
+            { text: 'Attack the thugs', sentinel },
+            { text: 'Stop the thugs and find out why they are attacking her.', consular }
         ]
     },
     {
         question: "You are in combat with a Dark Jedi allied with the Sith. There is a pause in the combat. What do you do?",
         answers: [
-            { text: 'Attack him again.', correct: true },
-            { text: 'Find out why he turned to the dark side and try to turn him.', correct: false },
-            { text: 'Try to see a weakness in his technique.', correct: false }
+            { text: 'Attack him again.', guardian },
+            { text: 'Find out why he turned to the dark side and try to turn him.', sentinel },
+            { text: 'Try to see a weakness in his technique.', consular }
         ]
     },
     {
         question: "There is a locked door and your goal lies on the other side. What do you do?",
         answers: [
-            { text: 'Smash the door down.', correct: true },
-            { text: 'Try to pick the lock.', correct: false },
-            { text: 'Knock.', correct: false }
+            { text: 'Smash the door down.', guardian },
+            { text: 'Try to pick the lock.', sentinel },
+            { text: 'Knock.', consular }
         ]
     },
     {
         question: "I have a feeling about what you would be best at. But first, the final question. You are the head of an Enclave on a contested world. The Dark Jedi have infiltrated and are causing unrest across the planet. What do you do?",
         answers: [
-            { text: 'Hunt them down.', correct: true },
-            { text: 'Try to lure them out into a trap.', correct: false },
-            { text: 'Coordinate with the planetary government to identify the infiltrators.', correct: false }
+            { text: 'Hunt them down.', guardian },
+            { text: 'Try to lure them out into a trap.', sentinel },
+            { text: 'Coordinate with the planetary government to identify the infiltrators.', consular }
         ]
     }
 ]
