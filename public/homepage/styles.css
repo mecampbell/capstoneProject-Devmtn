@@ -1,0 +1,61 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: "Press Start 2P", cursive;
+}
+body {
+    background-image: url("https://media.istockphoto.com/photos/jump-at-superluminal-speed-between-the-stars-picture-id1271527965?k=20&m=1271527965&s=612x612&w=0&h=9TNl7LmxUVVVODkumoK52s_Xv_pTUeqo0-PW1H-lUvM=");
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: #8a8d8f;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.btn {
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+    line-height: 1.5;
+}
+
+.btn:hover {
+    border-color: #fff36d
+}
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
