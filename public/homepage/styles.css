@@ -24,37 +24,38 @@ body {
     text-align: center;
     line-height: 1.5;
 }
-.body.guardian {
+
+.guardian {
     width: 800px;
     max-width: 80%;
-    background-color: #0827F5;
+    background-color: #8a8d8f;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
     text-align: center;
     line-height: 1.5;
 }
-.body.sentinel {
+.sentinel {
     width: 800px;
     max-width: 80%;
-    background-color: #FFF36D;
+    background-color: #8a8d8f;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
     text-align: center;
     line-height: 1.5;
 }
-.body.consular {
+.consular {
     width: 800px;
     max-width: 80%;
-    background-color: #3ED085;
+    background-color: #8a8d8f;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
     text-align: center;
     line-height: 1.5;
 }
-.body.uncle-owen {
+.uncle-owen {
     width: 800px;
     max-width: 80%;
     background-color: #8a8d8f;

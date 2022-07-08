@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div class="container">
+        <div id="container" class="container">
             <div id="question-container" class="hide">
                 <div id="question">Question</div>
                 <div id="answer-buttons" class="btn-grid">
@@ -25,19 +25,11 @@
             <div class="controls">
                 <button id="start-btn" class="start-btn btn">Start</button>
                 <button id="next-btn" class="next-btn btn hide">Next</button>
+                <button id="results-btn" class="results-btn btn hide">Results</button>
             </div>
-            <div id="result-container" class="guardian hide">
-                <div>Guardian</div>
-            </div>
-            <div id="result-container" class="sentinel hide">
-                <div>Sentinel</div>                
-            </div>
-            <div id="result-container" class="consular hide">
-                <div>Consular</div>                
-            </div>
-            <div id="result-container" class="uncle-owen hide">
-                <div>Uncle Owen</div>
-            </div>
+        </div>
+        <div id="result-container" class="hide">
+            <div id="guardian">guardian</div>
         </div>
         <script src="script.js" async defer></script>
     </body>

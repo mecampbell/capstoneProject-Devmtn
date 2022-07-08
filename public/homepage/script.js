@@ -1,45 +1,24 @@
 const startBtn = document.getElementById('start-btn')
 const nextButton = document.getElementById('next-btn')
+const resultsButton = document.getElementById('results-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
+const resultContainer = document.getElementById('result-container');
+const containerElement = document.getElementById('container');
 
-let shuffledQuestions, currentQuestionIndex, guardian, sentinel, consular
-
-startBtn.addEventListener('click', startGame)
-nextButton.addEventListener('click', () => {
-  currentQuestionIndex++
-  setNextQuestion()
-})
+let currentQuestionIndex, guardian, sentinel, consular
 
 function startGame() {
-    startBtn.classList.add('hide')
-  currentQuestionIndex = 0
-  questionContainerElement.classList.remove('hide')
-  setNextQuestion()
-}
+  startBtn.classList.add('hide');
+  currentQuestionIndex = 0;
+  questionContainerElement.classList.remove('hide');
+  setNextQuestion();
+};
 
 function setNextQuestion() {
   resetState()
   showQuestion(questions[currentQuestionIndex])
-}
-
-function showQuestion(question) {
-  questionElement.innerText = question.question
-  question.answers.forEach(answer => {
-    const button = document.createElement('button')
-    button.innerText = answer.text
-    button.classList.add('btn')
-    if (answer.guardian) {
-        guardian++
-    } else if (answer.sentinel) {
-        sentinel++
-    } else if (answer.consular) {
-        consular++
-    }
-    button.addEventListener('click', selectAnswer)
-    answerButtonsElement.appendChild(button)
-  })
 }
 
 function resetState() {
@@ -49,40 +28,44 @@ function resetState() {
   }
 }
 
+function showQuestion(question) {
+  questionElement.innerText = question.question
+  question.answers.forEach(answer => {
+    const button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+    button.addEventListener('click', selectAnswer)
+    answerButtonsElement.appendChild(button)
+  })
+}
+
 function selectAnswer(e) {
   const selectedButton = e.target
   const correct = selectedButton.dataset.correct
-  setStatusClass(document.body, correct)
-  Array.from(answerButtonsElement.children).forEach(button => {
-    setStatusClass(button, button.dataset.correct)
-  })
   if (questions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
-    startBtn.innerText = 'Results'
-    startBtn.classList.remove('hide')
+    resultsButton.classList.remove('hide')
+    startBtn.classList.add('hide')
   }
 }
 
-function setStatusClass(element, correct) {
-  addStatusClass(element)
-  if (guardian >= 2) {
-    element.classList.add('guardian')
-  } else if (sentinel >= 2) {
-    element.classList.add('sentinel')
-  } else if (consular >=2 ) {
-    element.classList.add('consular')
+const showResult = () => {
+  containerElement.classList.add('hide');
+  resultsButton.classList.add('hide');
+  resultContainer.classList.remove('hide');
+  if (guardian > 2) {
+    resultContainer.classList.add('guardian');
   }
 }
 
-function addStatusClass(element) {
-  element.classList.remove('correct')
-  element.classList.remove('wrong')
-}
+startBtn.addEventListener('click', startGame)
+nextButton.addEventListener('click', () => {
+  currentQuestionIndex++
+  setNextQuestion()
+})
+resultsButton.addEventListener('click', showResult)
 
-const finalResult = () => {
-
-}
 const questions = [
     {
         question: "Are you ready to be a Jedi?",
