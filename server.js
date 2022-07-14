@@ -7,15 +7,15 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/homepage/index.html"));
+    res.sendFile(path.join(__dirname, "/public/homepage/index.html"));
 });
 
 app.get("/styles", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/homepage/styles.css"));
+    res.sendFile(path.join(__dirname, "/public/homepage/styles.css"));
 });
 
 app.get("/js", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/homepage/script.js"));
+    res.sendFile(path.join(__dirname, "/public/homepage/script.js"));
 });
 
 const port = process.env.PORT || 5555;
