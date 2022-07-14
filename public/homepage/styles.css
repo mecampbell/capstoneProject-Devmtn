@@ -55,7 +55,7 @@ body {
     text-align: center;
     line-height: 1.5;
 }
-.uncle-owen {
+.non-jedi {
     width: 800px;
     max-width: 80%;
     background-color: #8a8d8f;
@@ -83,6 +83,16 @@ body {
 
 .btn:hover {
     border-color: #fff36d
+}
+
+.btn:active {
+    background-color: #fff36d;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.btn:focus {
+    background-color: #fff36d;
 }
 
 .start-btn, .next-btn {

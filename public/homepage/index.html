@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/styles">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <section id="container" class="container">
@@ -29,8 +29,11 @@
             </div>
         </section>
         <div id="result-container" class="hide">
-            <div id="guardian">guardian</div>
+            <div id="guardian-container" class="hide">Your answers have determined you to be a Jedi Guardian</div>
+            <div id="sentinel-container" class="hide">Your answers have determined you to be a Jedi Sentinel</div>
+            <div id="consular-container" class="hide">Your answers have determined you to be a Jedi Consular</div>
+            <div id="non-jedi-container" class="hide">Your answers have determined you to be a non-Jedi</div>
         </div>
-        <script src="/js" async defer></script>
+        <script src="script.js" async defer></script>
     </body>
 </html>
