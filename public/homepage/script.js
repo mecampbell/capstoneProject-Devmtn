@@ -7,10 +7,10 @@ const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
 const resultContainer = document.getElementById('result-container');
 const containerElement = document.getElementById('container');
-// const guardianContainer = document.getElementById("guardian-container");
-// const sentinelContainer = document.getElementById("sentinel-container");
-// const consularContainer = document.getElementById("consular-container");
-// const nonJediContainer = document.getElementById("non-jedi-container");
+const guardianContainer = document.getElementById("guardian-container");
+const sentinelContainer = document.getElementById("sentinel-container");
+const consularContainer = document.getElementById("consular-container");
+const nonJediContainer = document.getElementById("non-jedi-container");
 
 let currentQuestionIndex
 
@@ -66,20 +66,20 @@ const showResult = () => {
   containerElement.classList.add('hide');
   resultsButton.classList.add('hide');
   resultContainer.classList.remove('hide');
+  nonJediContainer.classList.remove('hide');
 
-  if (questions.answer[1] === true) {
-    nonJediContainer.classList.remove('hide');
-  }
+  // if (questions.answer[1] === true) {
+  // }
 
-  if (questions.answer[0] = 2) {
-    guardianContainer.classList.remove('hide');
-  }
-  if (questions.answer[1] = 2) {
-    sentinelContainer.classList.remove('hide');
-  }
-  if (questions.answer[2] = 2) {
-    consularContainer.classList.remove('hide');
-  }
+  // if (questions.answer[0] = 2) {
+  //   guardianContainer.classList.remove('hide');
+  // }
+  // if (questions.answer[1] = 2) {
+  //   sentinelContainer.classList.remove('hide');
+  // }
+  // if (questions.answer[2] = 2) {
+  //   consularContainer.classList.remove('hide');
+  // }
 };
 
 

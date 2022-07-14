@@ -25,7 +25,7 @@ body {
     line-height: 1.5;
 }
 
-.guardian {
+#guardian-container {
     width: 800px;
     max-width: 80%;
     background-color: #8a8d8f;
@@ -35,7 +35,8 @@ body {
     text-align: center;
     line-height: 1.5;
 }
-.sentinel {
+
+#sentinel-container {
     width: 800px;
     max-width: 80%;
     background-color: #8a8d8f;
@@ -45,7 +46,8 @@ body {
     text-align: center;
     line-height: 1.5;
 }
-.consular {
+
+#consular-container {
     width: 800px;
     max-width: 80%;
     background-color: #8a8d8f;
@@ -55,7 +57,8 @@ body {
     text-align: center;
     line-height: 1.5;
 }
-.non-jedi {
+
+#non-jedi-container {
     width: 800px;
     max-width: 80%;
     background-color: #8a8d8f;
