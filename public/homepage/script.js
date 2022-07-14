@@ -54,9 +54,7 @@ const showResult = () => {
   containerElement.classList.add('hide');
   resultsButton.classList.add('hide');
   resultContainer.classList.remove('hide');
-  // if (guardian > 2) {
-  //   resultContainer.classList.add('guardian');
-  // }
+  resultContainer.classList.add('guardian');
 }
 
 startBtn.addEventListener('click', startGame)
