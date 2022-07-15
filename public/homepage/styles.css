@@ -26,9 +26,13 @@ body {
     position: relative;
 }
 
-#guardian-container {
-    width: 800px;
+#result-container {
+    width: 100vw;
     max-width: 80%;
+}
+
+#guardian-container {
+    width: 100%;
     background-color: #8a8d8f;
     border-radius: 5px;
     padding: 10px;
@@ -38,7 +42,7 @@ body {
 }
 
 #sentinel-container {
-    width: 800px;
+    width: 100%;
     max-width: 80%;
     background-color: #8a8d8f;
     border-radius: 5px;
@@ -49,7 +53,7 @@ body {
 }
 
 #consular-container {
-    width: 800px;
+    width: 100%;
     max-width: 80%;
     background-color: #8a8d8f;
     border-radius: 5px;
@@ -60,7 +64,7 @@ body {
 }
 
 #non-jedi-container {
-    width: 800px;
+    width: 100%;
     max-width: 80%;
     background-color: #8a8d8f;
     border-radius: 5px;
