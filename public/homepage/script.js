@@ -27,8 +27,6 @@ function startGame() {
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove('hide');
   setNextQuestion();
-  // noButton = document.getElementById("//*[contains(text(), 'No')]");
-  // noButton.addEventListener('click', () => console.log('no was clicked'))
 };
 
 function nonJedi() {
@@ -67,7 +65,6 @@ function selectAnswer(e, type) {
   const selectedButton = e.target
   const correct = selectedButton.dataset.correct
   selectedType = type;
-  console.log(jediTypeCount)
   if (questions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
