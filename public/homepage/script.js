@@ -113,8 +113,8 @@ const questions = [
     {
         question: "A woman and her small child are beset by a desperate-looking group of thugs. They are menacing her with weapons and she screams to you for help. What do you do?",
         answers: [
-            { text: 'Help them flee', type: "guardianCount"},
-            { text: 'Attack the thugs', type: "sentinelCount"},
+            { text: 'Attack the thugs', type: "guardianCount"},
+            { text: 'Help them flee', type: "sentinelCount"},
             { text: 'Stop the thugs and find out why they are attacking her.', type: "consularCount"}
         ]
     },
