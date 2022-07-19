@@ -1,9 +1,11 @@
 const startBtn = document.getElementById('start-btn');
-const nextButton = document.getElementById('next-btn');
-const resultsButton = document.getElementById('results-btn');
-const questionContainerElement = document.getElementById('question-container');
+const nextBtn = document.getElementById('next-btn');
+const resultsBtn = document.getElementById('results-btn');
+const resetBtn = document.getElementById('reset-btn');
+const introMessage = document.getElementById('intro-message');
+const questionContainer = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
-const answerButtonsElement = document.getElementById('answer-buttons');
+const answerButtons = document.getElementById('answer-buttons');
 const resultContainer = document.getElementById('result-container');
 const containerElement = document.getElementById('container');
 const guardianContainer = document.getElementById("guardian-container");
@@ -13,41 +15,41 @@ const nonJediContainer = document.getElementById("non-jedi-container");
 
 let noButton
 let currentQuestionIndex
-
 let jediTypeCount = {
   guardianCount: 0,
   sentinelCount: 0,
   consularCount: 0
 }
-
 let selectedType = '';
 
-function startGame() {
+const startGame = () => {
   startBtn.classList.add('hide');
+  introMessage.classList.add('hide');
   currentQuestionIndex = 0;
-  questionContainerElement.classList.remove('hide');
+  questionContainer.classList.remove('hide');
   setNextQuestion();
 };
 
-function nonJedi() {
+const nonJedi = () => {
   containerElement.classList.add('hide');
   resultContainer.classList.remove('hide');
   nonJediContainer.classList.remove('hide');
+  resetBtn.classList.remove('hide');
 }
 
-function setNextQuestion() {
+const setNextQuestion = () => {
   resetState()
   showQuestion(questions[currentQuestionIndex])
 };
 
-function resetState() {
-  nextButton.classList.add('hide')
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+const resetState = () => {
+  nextBtn.classList.add('hide')
+  while (answerButtons.firstChild) {
+    answerButtons.removeChild(answerButtons.firstChild)
   }
 };
 
-function showQuestion(question) {
+const showQuestion = (question) => {
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
     const button = document.createElement('button')
@@ -57,26 +59,27 @@ function showQuestion(question) {
       button.addEventListener('click', nonJedi)
     }
     button.addEventListener('click', (e) => selectAnswer(e, answer.type))
-    answerButtonsElement.appendChild(button)
+    answerButtons.appendChild(button)
   })
 };
 
-function selectAnswer(e, type) {
+const selectAnswer = (e, type) => {
   const selectedButton = e.target
   const correct = selectedButton.dataset.correct
   selectedType = type;
   if (questions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove('hide')
+    nextBtn.classList.remove('hide')
   } else {
-    resultsButton.classList.remove('hide')
+    resultsBtn.classList.remove('hide')
     startBtn.classList.add('hide')
   }
 };
 
 const showResult = () => {
   containerElement.classList.add('hide');
-  resultsButton.classList.add('hide');
+  resultsBtn.classList.add('hide');
   resultContainer.classList.remove('hide');
+  resetBtn.classList.remove('hide');
   
   if (jediTypeCount.guardianCount >= 2) {
     guardianContainer.classList.remove('hide');
@@ -89,15 +92,17 @@ const showResult = () => {
   }
 };
 
-
 startBtn.addEventListener('click', startGame);
-nextButton.addEventListener('click', () => {
+nextBtn.addEventListener('click', () => {
   currentQuestionIndex++
   jediTypeCount[selectedType]++
   selectedType = '';
   setNextQuestion()
 });
-resultsButton.addEventListener('click', showResult);
+resultsBtn.addEventListener('click', showResult);
+resetBtn.addEventListener('click', () => {
+  location.reload();
+});
 
 const questions = [
     {
