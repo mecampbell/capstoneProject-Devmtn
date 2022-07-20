@@ -2,6 +2,7 @@ const startBtn = document.getElementById('start-btn');
 const nextBtn = document.getElementById('next-btn');
 const resultsBtn = document.getElementById('results-btn');
 const resetBtn = document.getElementById('reset-btn');
+const moreInfoBtn = document.getElementById('more-info-btn');
 const introMessage = document.getElementById('intro-message');
 const questionContainer = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
@@ -80,6 +81,7 @@ const showResult = () => {
   resultsBtn.classList.add('hide');
   resultContainer.classList.remove('hide');
   resetBtn.classList.remove('hide');
+  moreInfoBtn.classList.remove('hide');
   
   if (jediTypeCount.guardianCount >= 2) {
     guardianContainer.classList.remove('hide');

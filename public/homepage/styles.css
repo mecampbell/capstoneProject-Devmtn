@@ -62,6 +62,7 @@ li {
 
 #guardian-container {
     width: 100%;
+    max-width: 80%;
     background-color: #8a8d8f;
     border-radius: 5px;
     padding: 10px;
