@@ -18,3 +18,7 @@ When going through the Jedi trials questions are asked to understand what type o
 | Example Color | ![#9063CD](https://via.placeholder.com/10/9063CD?text=+) #9063CD |
 | Example Color | ![#8A8D8F](https://via.placeholder.com/10/8A8D8F?text=+) #8A8D8F |
 
+
+## Support
+
+At this time, the API information is commented out.  
