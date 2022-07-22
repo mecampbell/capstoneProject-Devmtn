@@ -2,6 +2,7 @@ const startBtn = document.getElementById('start-btn');
 const nextBtn = document.getElementById('next-btn');
 const resultsBtn = document.getElementById('results-btn');
 const resetBtn = document.getElementById('reset-btn');
+const createCharacterBtn = document.getElementById('create-character-btn');
 const moreInfoBtn = document.getElementById('more-info-btn');
 const introMessage = document.getElementById('intro-message');
 const questionContainer = document.getElementById('question-container');
@@ -13,6 +14,23 @@ const guardianContainer = document.getElementById("guardian-container");
 const sentinelContainer = document.getElementById("sentinel-container");
 const consularContainer = document.getElementById("consular-container");
 const nonJediContainer = document.getElementById("non-jedi-container");
+const characterContainer = document.querySelector('#character-container')
+const form = document.querySelector('form');
+
+const baseURL = `http://localhost:5555/api/characters`
+
+const characterCallback = ({ data: characters }) => {
+  displayCharacters(characters);
+};
+
+const errCallback = (err) => {
+  console.log(err)
+};
+
+const getCharacters = () => axios.get(baseURL).then(characterCallback).catch(errCallback)
+const createCharacter = body => axios.post(baseURL, body).then(characterCallback).catch(errCallback)
+const deleteCharacter = id => axios.delete(`${baseURL}/${id}`).then(characterCallback).catch(errCallback)
+
 
 let noButton
 let currentQuestionIndex
@@ -36,6 +54,7 @@ const nonJedi = () => {
   resultContainer.classList.remove('hide');
   nonJediContainer.classList.remove('hide');
   resetBtn.classList.remove('hide');
+  createCharacterBtn.classList.remove('hide')
 }
 
 const setNextQuestion = () => {
@@ -81,7 +100,7 @@ const showResult = () => {
   resultsBtn.classList.add('hide');
   resultContainer.classList.remove('hide');
   resetBtn.classList.remove('hide');
-  moreInfoBtn.classList.remove('hide');
+  createCharacterBtn.classList.remove('hide')
   
   if (jediTypeCount.guardianCount >= 2) {
     guardianContainer.classList.remove('hide');
@@ -92,6 +111,50 @@ const showResult = () => {
   else {
     consularContainer.classList.remove('hide');
   }
+};
+
+const submitHandler = (e) => {
+  e.preventDefault()
+
+  let firstName = document.querySelector('#first-name')
+  let lastName = document.querySelector('#last-name')
+  let characterClass = document.querySelector('#character-class')
+  let imageURL = document.querySelector('#img')
+
+  let bodyObj = {
+      firstName: firstName.value,
+      lastName: lastName.value, 
+      characterClass: characterClass.value,
+      imageURL: imageURL.value
+  }
+
+  createCharacter(bodyObj)
+
+  firstName.value = ''
+  lastName.value = ''
+  characterClass.value = ''
+  imageURL.value = ''
+}
+
+const createCharacterCard = (character) => {
+  const characterCard = document.createElement('div');
+  characterCard.classList.add('character-card');
+
+  characterCard.innerHTML = `<img alt='character cover image' src=${character.imageURL} class="character-cover-image"/>
+  <p class="first-name">${character.first_name}</p>
+  <p class="last-name">${character.last_name}</p>
+  <p class="character-class">${character.character_class}</p>
+  <button onclick="deleteHouse(${character.id})">delete</button>
+  `
+
+  characterContainer.appendChild(characterCard)
+};
+
+const displayCharacters = (arr) => {
+  charactersContainer.innerHTML = ``;
+  for (let i = 0; i < arr.length; i++) {
+    createCharacterCard(arr[i])
+  };
 };
 
 startBtn.addEventListener('click', startGame);
@@ -105,6 +168,7 @@ resultsBtn.addEventListener('click', showResult);
 resetBtn.addEventListener('click', () => {
   location.reload();
 });
+createCharacterBtn.addEventListener('submit', submitHandler);
 
 const questions = [
     {
