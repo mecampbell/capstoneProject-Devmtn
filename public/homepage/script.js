@@ -17,7 +17,7 @@ const nonJediContainer = document.getElementById("non-jedi-container");
 const characterContainer = document.querySelector('#character-container')
 const form = document.querySelector('form');
 
-const baseURL = `http://localhost:5555/api/characters`
+const baseURL = "http://localhost:5555/api/characters" || "https://jediclass.herokuapp.com"
 
 const characterCallback = ({ data: characters }) => {
   displayCharacters(characters);
