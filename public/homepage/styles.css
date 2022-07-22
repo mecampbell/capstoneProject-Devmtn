@@ -145,7 +145,7 @@ li {
     align-items: center;
 }
 
-form {
+/* form {
     width: 800px;
     max-width: 80%;
     background-color: #8a8d8f;
@@ -210,7 +210,7 @@ input[type='text'] {
 .house-price {
     font-size: 15px;
     margin: 5px 0;
-}
+} */
 
 .hide {
     display: none;
