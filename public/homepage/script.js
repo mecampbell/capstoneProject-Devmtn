@@ -57,7 +57,6 @@ const nonJedi = () => {
   resultContainer.classList.remove('hide');
   nonJediContainer.classList.remove('hide');
   resetBtn.classList.remove('hide');
-  getBtn.classList.remove('hide');
 };
 
 const setNextQuestion = () => {
