@@ -3,49 +3,38 @@ const nextBtn = document.getElementById('next-btn');
 const resultsBtn = document.getElementById('results-btn');
 const resetBtn = document.getElementById('reset-btn');
 const answerBtns = document.getElementById('answer-buttons');
-const createCharacterBtn = document.getElementById('create-character-btn');
+// const getBtn = document.getElementById('view-characters');
+// const postBtn = document.getElementById('submit-form');
+// const deleteBtn = document.getElementById('view-characters');
 
 const introMessage = document.getElementById('intro-message');
 const questionElement = document.getElementById('question');
 const containerElement = document.getElementById('container');
 
+// const submitForm = document.getElementById('submit-form');
 const questionContainer = document.getElementById('question-container');
 const resultContainer = document.getElementById('result-container');
 const guardianContainer = document.getElementById("guardian-container");
 const sentinelContainer = document.getElementById("sentinel-container");
 const consularContainer = document.getElementById("consular-container");
 const nonJediContainer = document.getElementById("non-jedi-container");
-const characterContainer = document.querySelector('#character-container')
-const form = document.querySelector('form');
 
-const baseURL = "https://jediclass.herokuapp.com" || "http://localhost:5555"
-const characterURL = `${baseURL}/api/characters`;
+const baseURL = "https://jediclass.herokuapp.com" || "http://localhost:5555";
+const characterURL = `http://localhost:5555/api/characters`;
 
-const characterCallback = ({ data: characters }) => {
-  displayCharacters(characters);
-};
-
-const errCallback = (err) => {
-  console.log(err)
-};
-
-const getCharacters = () => axios.get(baseURL).then(characterCallback).catch(errCallback)
-const createCharacter = body => axios.post(baseURL, body).then(characterCallback).catch(errCallback)
-const deleteCharacter = id => axios.delete(`${baseURL}/${id}`).then(characterCallback).catch(errCallback)
-
-
-let noButton
-let currentQuestionIndex
+let noButton;
+let currentQuestionIndex;
 let jediTypeCount = {
   guardianCount: 0,
   sentinelCount: 0,
   consularCount: 0
-}
+};
 let selectedType = '';
 
 const startGame = () => {
   startBtn.classList.add('hide');
   introMessage.classList.add('hide');
+  // submitForm.classList.add('hide');
   currentQuestionIndex = 0;
   questionContainer.classList.remove('hide');
   setNextQuestion();
@@ -56,8 +45,8 @@ const nonJedi = () => {
   resultContainer.classList.remove('hide');
   nonJediContainer.classList.remove('hide');
   resetBtn.classList.remove('hide');
-  createCharacterBtn.classList.remove('hide')
-}
+  getBtn.classList.remove('hide')
+};
 
 const setNextQuestion = () => {
   resetState()
@@ -102,7 +91,7 @@ const showResult = () => {
   resultsBtn.classList.add('hide');
   resultContainer.classList.remove('hide');
   resetBtn.classList.remove('hide');
-  createCharacterBtn.classList.remove('hide')
+  getBtn.classList.remove('hide')
   
   if (jediTypeCount.guardianCount >= 2) {
     guardianContainer.classList.remove('hide');
@@ -115,62 +104,20 @@ const showResult = () => {
   }
 };
 
-const submitHandler = (e) => {
-  e.preventDefault()
-
-  let firstName = document.querySelector('#first-name')
-  let lastName = document.querySelector('#last-name')
-  let characterClass = document.querySelector('#character-class')
-  let imageURL = document.querySelector('#img')
-
-  let bodyObj = {
-      firstName: firstName.value,
-      lastName: lastName.value, 
-      characterClass: characterClass.value,
-      imageURL: imageURL.value
-  }
-
-  createCharacter(bodyObj)
-
-  firstName.value = ''
-  lastName.value = ''
-  characterClass.value = ''
-  imageURL.value = ''
-}
-
-const createCharacterCard = (character) => {
-  const characterCard = document.createElement('div');
-  characterCard.classList.add('character-card');
-
-  characterCard.innerHTML = `<img alt='character cover image' src=${character.imageURL} class="character-cover-image"/>
-  <p class="first-name">${character.first_name}</p>
-  <p class="last-name">${character.last_name}</p>
-  <p class="character-class">${character.character_class}</p>
-  <button onclick="deleteHouse(${character.id})">delete</button>
-  `
-
-  characterContainer.appendChild(characterCard)
-};
-
-const displayCharacters = (arr) => {
-  charactersContainer.innerHTML = ``;
-  for (let i = 0; i < arr.length; i++) {
-    createCharacterCard(arr[i])
-  };
-};
-
 startBtn.addEventListener('click', startGame);
 nextBtn.addEventListener('click', () => {
   currentQuestionIndex++
   jediTypeCount[selectedType]++
   selectedType = '';
   setNextQuestion()
-});
+  }
+);
 resultsBtn.addEventListener('click', showResult);
 resetBtn.addEventListener('click', () => {
   location.reload();
-});
-createCharacterBtn.addEventListener('submit', submitHandler);
+  }
+);
+// getBtn.addEventListener('click', getCharacters);
 
 const questions = [
     {

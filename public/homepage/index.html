@@ -28,6 +28,11 @@
                     <button class="btn">Answer 3</button>
                 </div>
             </div>
+            <!-- <form class="form hide" id="submit-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="fullname" maxlength="30">
+                <input type="submit" value="Submit">
+            </form> -->
             <div class="controls">
                 <button id="start-btn" class="start-btn btn">Start</button>
                 <button id="next-btn" class="next-btn btn hide">Next</button>
@@ -105,29 +110,9 @@
                 </div>
             </div>
             <button id="reset-btn" class="reset-btn btn hide">Reset</button>
-            <!-- <button id="create-character-btn" class="create-character-btn btn hide">Create a character</button> -->
-        </section>
-        <!-- <form class="hide">
-            <input 
-                type='text'
-                id="first-name"
-                placeholder="What's your first name?"/>
-            <input 
-                type='text'
-                id="last-name"
-                placeholder='What is your last name?'/>
-            <input 
-                type='text'
-                id="character-class"
-                placeholder='What is your class?'/>
-            <input 
-                type='text'
-                id="img"
-                placeholder='Paste an image URL'/>
-            <button>add character</button>
-        </form>
-        <section id="character-container" class="hide"></section> -->
-        <script src="script.js" async defer></script>
-        <!-- <script src="./node_modules/axios/dist/axios.min.js" async defer></script> -->
+            <button id="view-characters" class="view-characters-btn btn hide">View Users</button>
+        <section id="character-container" class="hide"></section>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
