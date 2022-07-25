@@ -28,16 +28,16 @@
                     <button class="btn">Answer 3</button>
                 </div>
             </div>
-            <!-- <form class="form hide" id="submit-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="fullname" maxlength="30">
-                <input type="submit" value="Submit">
-            </form> -->
             <div class="controls">
                 <button id="start-btn" class="start-btn btn">Start</button>
                 <button id="next-btn" class="next-btn btn hide">Next</button>
                 <button id="results-btn" class="results-btn btn hide">Results</button>
             </div>
+            <form id="form">
+                <label for="name">Add your name to the Jedi Archives</label>
+                <input type="text" maxlength="30">
+                <input type="submit" value="Submit" id="submit-btn" class="submit-btn">
+            </form>
         </section>
         <section id="result-container" class="hide">
             <div id="guardian-container" class="hide">
@@ -47,7 +47,7 @@
                 <div>Popular Jedi Guardian's include
                     <ul>
                         <li>
-                            <a href="https://starwars.fandom.com/wiki/Anakin_Skywalker" target="_blank">Anikan Skywalker</a>
+                            <a href="https://starwars.fandom.com/wiki/Anakin_Skywalker" target="_blank">Anakin Skywalker</a>
                         </li>
                         <li>
                             <a href="https://starwars.fandom.com/wiki/Obi-Wan_Kenobi" target="_blank">Obi-Wan Kenobi</a>
@@ -110,9 +110,8 @@
                 </div>
             </div>
             <button id="reset-btn" class="reset-btn btn hide">Reset</button>
-            <button id="view-characters" class="view-characters-btn btn hide">View Users</button>
-        <section id="character-container" class="hide"></section>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <button id="get-btn" class="get-btn btn hide">Get a Jedi Master</button>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

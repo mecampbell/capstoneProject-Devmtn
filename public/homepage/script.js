@@ -3,15 +3,13 @@ const nextBtn = document.getElementById('next-btn');
 const resultsBtn = document.getElementById('results-btn');
 const resetBtn = document.getElementById('reset-btn');
 const answerBtns = document.getElementById('answer-buttons');
-// const getBtn = document.getElementById('view-characters');
-// const postBtn = document.getElementById('submit-form');
-// const deleteBtn = document.getElementById('view-characters');
-
+const getBtn = document.getElementById('get-btn');
+const submitBtn = document.getElementById('submit-btn')
+const form = document.getElementById('form')
 const introMessage = document.getElementById('intro-message');
 const questionElement = document.getElementById('question');
 const containerElement = document.getElementById('container');
 
-// const submitForm = document.getElementById('submit-form');
 const questionContainer = document.getElementById('question-container');
 const resultContainer = document.getElementById('result-container');
 const guardianContainer = document.getElementById("guardian-container");
@@ -19,8 +17,22 @@ const sentinelContainer = document.getElementById("sentinel-container");
 const consularContainer = document.getElementById("consular-container");
 const nonJediContainer = document.getElementById("non-jedi-container");
 
-const baseURL = "https://jediclass.herokuapp.com" || "http://localhost:5555";
-const characterURL = `http://localhost:5555/api/characters`;
+const baseURL = "http://localhost:5555";
+const masterURL = `${baseURL}/api/masters`;
+const newPersonURL = `${baseURL}/api/archives`
+
+const getMaster = () => {
+  axios.get(masterURL)
+  .then(res => {
+    const data = res.data;
+    alert(data)
+  })
+}
+
+const newPerson = () => {
+  axios.post(newPersonURL)
+  .then(() => alert(`a record has been added to the archives`))
+}
 
 let noButton;
 let currentQuestionIndex;
@@ -33,8 +45,8 @@ let selectedType = '';
 
 const startGame = () => {
   startBtn.classList.add('hide');
+  form.classList.add('hide');
   introMessage.classList.add('hide');
-  // submitForm.classList.add('hide');
   currentQuestionIndex = 0;
   questionContainer.classList.remove('hide');
   setNextQuestion();
@@ -45,7 +57,7 @@ const nonJedi = () => {
   resultContainer.classList.remove('hide');
   nonJediContainer.classList.remove('hide');
   resetBtn.classList.remove('hide');
-  getBtn.classList.remove('hide')
+  getBtn.classList.remove('hide');
 };
 
 const setNextQuestion = () => {
@@ -91,7 +103,7 @@ const showResult = () => {
   resultsBtn.classList.add('hide');
   resultContainer.classList.remove('hide');
   resetBtn.classList.remove('hide');
-  getBtn.classList.remove('hide')
+  getBtn.classList.remove('hide');
   
   if (jediTypeCount.guardianCount >= 2) {
     guardianContainer.classList.remove('hide');
@@ -117,7 +129,8 @@ resetBtn.addEventListener('click', () => {
   location.reload();
   }
 );
-// getBtn.addEventListener('click', getCharacters);
+getBtn.addEventListener('click', getMaster);
+submitBtn.addEventListener('click', newPerson);
 
 const questions = [
     {

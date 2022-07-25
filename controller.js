@@ -1,20 +1,24 @@
-const characters = require('./db.json');
-let setId = 2;
+// const archives = require('./db.json');
+let archives = ["Michael"]
 
 module.exports = {
-    getCharacters: (req, res) => res.status(200).send(characters),
-    createCharacter: (req, res) => {
-        let { name } = req.body;
-        let newCharacter = {
-            id: setId
-        };
-        characters.push(newCharacter);
-        res.status(200).send(characters);
-        setId++;
+    getMaster: (req, res) => {      
+        let masters = ["Yoda", "Obi-Wan Kenobi", "Qui-Gon Jinn", "Anakin Skywalker", "Count Dooku", "Darth Maul", "Kylo Ren", "Darth Revan", "Emperor Palpatine"];
+
+        let randomIndex = Math.floor(Math.random() * masters.length);
+        let randomMaster = masters[randomIndex];
+
+        res.status(200).send(randomMaster)
     },
-    deleteCharacter: (req, res) => {
-        let index = characters.findIndex(elem => elem.id === +req.params.id);
-        characters.splice(index, 1);
-        res.status(200).send(characters);
+    getArchives: (req, res) => {
+        res.status(200).send(archives);
+    },
+    addArchive: (req, res) => {
+        let { name } = req.body;
+        let newArchive = {
+            name
+        };
+        archives.push(newArchive);
+        res.status(200).send(archives)
     }
 };

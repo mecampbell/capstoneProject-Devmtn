@@ -7,11 +7,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public/homepage')));
 
-const { getCharacters, createCharacter, deleteCharacter } = require('./controller');
+const { getMaster, getArchives, addArchive } = require('./controller');
 
-app.get(`/api/characters`, getCharacters);
-app.post(`/api/characters`, createCharacter);
-app.delete(`/api/characters/:id`, deleteCharacter);
+app.get(`/api/masters`, getMaster);
+app.get(`/api/archives`, getArchives);
+app.post(`/api/archives`, addArchive);
 
 const port = process.env.PORT || 5555;
 

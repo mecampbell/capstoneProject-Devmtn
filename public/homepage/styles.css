@@ -121,7 +121,7 @@ li {
     background-color: #fff36d;
 }
 
-.start-btn, .next-btn, .results-btn, .reset-btn, .view-characters-btn {
+.start-btn, .next-btn, .results-btn, .reset-btn, .get-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
